@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service MessagingService {
+  rpc SendMessage (MessageRequest) returns (MessageResponse);
+}
+
+message MessageRequest {
+  string userId = 1;
+  string groupId = 2;
+  string content = 3;
+}
+
+message MessageResponse {
+  string messageId = 1;
+  string status = 2;
+}

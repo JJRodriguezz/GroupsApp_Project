@@ -1,0 +1,7 @@
+{
+  "event": "file.uploaded",
+  "fileId": "uuid",
+  "userId": "uuid",
+  "url": "string",
+  "timestamp": "ISO8601"
+}

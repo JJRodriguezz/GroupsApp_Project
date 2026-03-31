@@ -1,0 +1,5 @@
+POST /media/upload
+Response:
+{
+  "url": "s3-url"
+}

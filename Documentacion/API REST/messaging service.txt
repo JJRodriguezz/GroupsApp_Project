@@ -1,0 +1,11 @@
+POST /messages
+Body:
+{
+  "groupId": "string",
+  "content": "string",
+  "type": "text | image | file"
+}
+
+GET /groups/{groupId}/messages
+
+PATCH /messages/{messageId}/read

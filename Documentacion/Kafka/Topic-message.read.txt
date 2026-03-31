@@ -1,0 +1,6 @@
+{
+  "event": "message.read",
+  "messageId": "uuid",
+  "userId": "uuid",
+  "timestamp": "ISO8601"
+}

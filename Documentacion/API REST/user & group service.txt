@@ -1,0 +1,12 @@
+POST /groups
+Headers: Authorization: Bearer <JWT>
+Body:
+{
+  "name": "string"
+}
+
+POST /groups/{groupId}/join
+
+GET /groups/{groupId}
+
+GET /users/{userId}/groups

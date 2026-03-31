@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service UserGroupService {
+  rpc ValidateUserInGroup (ValidateRequest) returns (ValidateResponse);
+}
+
+message ValidateRequest {
+  string userId = 1;
+  string groupId = 2;
+}
+
+message ValidateResponse {
+  bool isMember = 1;
+}

@@ -1,0 +1,8 @@
+{
+  "event": "message.created",
+  "messageId": "uuid",
+  "groupId": "uuid",
+  "senderId": "uuid",
+  "content": "string",
+  "timestamp": "ISO8601"
+}

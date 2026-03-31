@@ -1,0 +1,6 @@
+{
+  "event": "user.online",
+  "userId": "uuid",
+  "status": "online | offline",
+  "timestamp": "ISO8601"
+}

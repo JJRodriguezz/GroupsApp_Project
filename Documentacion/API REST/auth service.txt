@@ -1,0 +1,18 @@
+POST /auth/register
+Body:
+{
+  "username": "string",
+  "password": "string"
+}
+
+POST /auth/login
+Body:
+{
+  "username": "string",
+  "password": "string"
+}
+
+Response:
+{
+  "token": "JWT"
+}

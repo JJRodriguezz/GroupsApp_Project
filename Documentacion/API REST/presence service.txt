@@ -1,0 +1,6 @@
+GET /users/{userId}/presence
+
+Response:
+{
+  "status": "online | offline"
+}
