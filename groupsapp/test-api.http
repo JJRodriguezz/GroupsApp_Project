@@ -1,0 +1,285 @@
+### GroupsApp - API Testing
+### Ejecuta cada request haciendo click en "Send Request" o Ctrl+Alt+R
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### IDs REALES (Actualizar según tus respuestas)
+@userJuan = 33fb840e-e01c-487d-baaf-b177b35d683e
+@userMaria = 08efdf84-6d2a-4f3a-9aa5-aed6d834112b
+@userCarlos = 427878cf-fcda-4810-9619-8b8ce1df26e2
+@groupDesarrolladores = 287f12f0-850b-40eb-ad17-b0e8473f16c6
+@groupDiseñadores = 77523986-3de9-4605-97e9-c1897866be21
+@groupMarketing = 968c9f8c-4115-4e0d-be78-df6c5556cceb
+@tokenJuan = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzM2ZiODQwZS1lMDFjLTQ4N2QtYmFhZi1iMTc3YjM1ZDY4M2UiLCJ1c2VybmFtZSI6Imp1YW4iLCJpYXQiOjE3NzUwMTc5MTUsImV4cCI6MTc3NTEwNDMxNX0.DqsYHulo6oK4HjQclWywO_mdaGNrfKEsoWvv5VyQW0c
+@tokenMaria = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGVmZGY4NC02ZDJhLTRmM2EtOWFhNS1hZWQ2ZDgzNDExMmIiLCJ1c2VybmFtZSI6Im1hcmlhIiwiaWF0IjoxNzc1MDE3OTQ2LCJleHAiOjE3NzUxMDQzNDZ9.OIo96k0tYhsZPWtLyP3vqhV6F2xr6r6m7vb_cA1TQAk
+@tokenCarlos = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0Mjc4NzhjZi1mY2RhLTQ4MTAtOTYxOS04YjhjZTFkZjI2ZTIiLCJ1c2VybmFtZSI6ImNhcmxvcyIsImlhdCI6MTc3NTAxNzk2NCwiZXhwIjoxNzc1MTA0MzY0fQ.S8Vl6nzP_ULGo7XVv3FtrIxDwndw7dIfebsY83tBFcg
+
+### ============================================================
+### 1️⃣ HEALTH CHECK (Sin autenticación)
+### ============================================================
+
+GET {{baseUrl}}
+
+### ============================================================
+### 2️⃣ REGISTRO DE USUARIO
+### ============================================================
+
+### Crear usuario: Juan
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "username": "juan",
+  "password": "123456",
+  "email": "juan@example.com"
+}
+
+### ============================================================
+### Crear usuario: María
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "username": "maria",
+  "password": "password123",
+  "email": "maria@example.com"
+}
+
+### ============================================================
+### Crear usuario: Carlos
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+  "username": "carlos",
+  "password": "carlos123",
+  "email": "carlos@example.com"
+}
+
+### ============================================================
+### 3️⃣ LOGIN (Obtener JWT Token)
+### ============================================================
+
+### Login con Juan
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "username": "juan",
+  "password": "123456"
+}
+
+### Login con María
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "username": "maria",
+  "password": "password123"
+}
+
+### Login con Carlos
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+  "username": "carlos",
+  "password": "carlos123"
+}
+
+### ============================================================
+### 4️⃣ GESTIÓN DE USUARIOS
+### ============================================================
+
+### Listar todos los usuarios
+GET {{baseUrl}}/users
+
+### Obtener usuario específico (reemplaza con ID real)
+GET {{baseUrl}}/users/33fb840e-e01c-487d-baaf-b177b35d683e
+
+### ============================================================
+### 5️⃣ CREAR Y GESTIONAR GRUPOS
+### ============================================================
+
+### Crear grupo "Desarrolladores"
+POST {{baseUrl}}/groups
+Authorization: Bearer {{tokenJuan}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Desarrolladores",
+  "description": "Equipo de desarrollo del proyecto"
+}
+
+### Crear grupo "Diseñadores"
+POST {{baseUrl}}/groups
+Authorization: Bearer {{tokenJuan}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Diseñadores",
+  "description": "Equipo de diseño UX/UI"
+}
+
+### Crear grupo "Marketing"
+POST {{baseUrl}}/groups
+Authorization: Bearer {{tokenJuan}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Marketing",
+  "description": "Equipo de estrategia de marketing"
+}
+
+### ============================================================
+### Listar todos los grupos
+GET {{baseUrl}}/groups
+
+### Obtener detalles de un grupo (reemplaza con ID real)
+GET {{baseUrl}}/groups/80305fa2-c625-4154-b289-17c3ec23a506
+
+### Actualizar grupo (reemplaza con ID real)
+PUT {{baseUrl}}/groups/80305fa2-c625-4154-b289-17c3ec23a506
+Authorization: Bearer {{tokenJuan}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Desarrolladores Java",
+  "description": "Especializado en backend con Java"
+}
+
+### ============================================================
+### 6️⃣ GESTIONAR MIEMBROS DEL GRUPO
+### ============================================================
+
+### Agregar usuario a grupo
+POST {{baseUrl}}/groups/{{groupDesarrolladores}}/members/{{userJuan}}
+Authorization: Bearer {{tokenJuan}}
+
+### Listar miembros de un grupo
+GET {{baseUrl}}/groups/{{groupDesarrolladores}}/members
+Authorization: Bearer {{tokenJuan}}
+
+### Remover miembro de grupo
+DELETE {{baseUrl}}/groups/{{groupDesarrolladores}}/members/{{userMaria}}
+Authorization: Bearer {{tokenJuan}}
+
+### ============================================================
+### 7️⃣ MENSAJERÍA
+### ============================================================
+
+### Enviar mensaje a grupo
+POST {{baseUrl}}/messages
+Content-Type: {{contentType}}
+
+{
+  "content": "¡Hola equipo! ¿Cómo están?",
+  "senderId": "{{userJuan}}",
+  "groupId": "{{groupDesarrolladores}}"
+}
+
+### Enviar otro mensaje
+POST {{baseUrl}}/messages
+Content-Type: {{contentType}}
+
+{
+  "content": "Mensaje de prueba #2",
+  "senderId": "{{userJuan}}",
+  "groupId": "{{groupDesarrolladores}}"
+}
+
+### ============================================================
+### Obtener mensajes de un grupo
+GET {{baseUrl}}/messages/group/{{groupDesarrolladores}}?limit=50&offset=0
+
+### Obtener mensaje específico (reemplaza con ID real)
+GET {{baseUrl}}/messages/c7c8a35d-be0a-4076-87a1-a1eb2d8a8f73
+
+### Editar mensaje (reemplaza con ID real)
+PUT {{baseUrl}}/messages/c7c8a35d-be0a-4076-87a1-a1eb2d8a8f73
+Content-Type: {{contentType}}
+
+{
+  "content": "Mensaje editado - ahora con cambios",
+  "senderId": "{{userJuan}}"
+}
+
+### Eliminar mensaje (reemplaza con ID real)
+DELETE {{baseUrl}}/messages/c7c8a35d-be0a-4076-87a1-a1eb2d8a8f73
+Content-Type: {{contentType}}
+
+{
+  "senderId": "{{userJuan}}"
+}
+
+### ============================================================
+### 8️⃣ MEDIA (Archivos)
+### ============================================================
+
+### Upload de archivo (simulado)
+POST {{baseUrl}}/media/upload
+Content-Type: {{contentType}}
+
+{
+  "filename": "documento.pdf",
+  "userId": "{{userJuan}}",
+  "groupId": "{{groupDesarrolladores}}"
+}
+
+### Obtener detalles de archivo (reemplaza con ID real)
+GET {{baseUrl}}/media/63c1147e-374b-4280-816c-16f095be8710
+
+### Eliminar archivo (reemplaza con ID real)
+DELETE {{baseUrl}}/media/63c1147e-374b-4280-816c-16f095be8710
+Content-Type: {{contentType}}
+
+{
+  "userId": "{{userJuan}}"
+}
+
+### ============================================================
+### 9️⃣ PRESENCIA
+### ============================================================
+
+### Cambiar estado de presencia a "online" (PRIMERO - crea la presencia)
+POST {{baseUrl}}/presence/{{userJuan}}/status
+Content-Type: {{contentType}}
+
+{
+  "status": "online"
+}
+
+### Obtener presencia de usuario (AHORA ya existe)
+GET {{baseUrl}}/presence/{{userJuan}}
+
+### Obtener presencia de todos
+GET {{baseUrl}}/presence
+
+### Cambiar a "away"
+POST {{baseUrl}}/presence/{{userJuan}}/status
+Content-Type: {{contentType}}
+
+{
+  "status": "away"
+}
+
+### Cambiar a "offline"
+POST {{baseUrl}}/presence/{{userJuan}}/status
+Content-Type: {{contentType}}
+
+{
+  "status": "offline"
+}
+
+### ============================================================
+### NOTAS:
+### ============================================================
+### 
+### 1. Reemplaza los UUIDs con los IDs reales obtenidos de las respuestas
+### 2. Guarda los IDs en la sección @variables del archivo
+### 3. Los campos "description?" son opcionales
+### 4. El servidor compila automáticamente cambios (Ctrl+S)
+### 5. Revisa la consola del servidor para ver los queries SQL
+###
+### ============================================================
