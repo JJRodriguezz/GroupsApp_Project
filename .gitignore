@@ -1,0 +1,81 @@
+# ===== HERRAMIENTAS Y AUTOMATIZACIÓN (CONFIDENCIAL) =====
+# Archivos que evidencian uso de herramientas de IA y automatización
+agents.md
+*.instructions.md
+.copilot*
+.agent*
+SKILL.md
+
+
+# ===== DOCUMENTACIÓN PRIVADA =====
+# Documentos específicos de desarrollo/notas personales
+Documentacion/
+README_PRIVADO.md
+NOTAS_DESARROLLO.md
+
+
+# ===== CREDENCIALES Y CONFIGURACIÓN SENSIBLE =====
+# Variables de entorno y archivos de configuración local
+.env
+.env.local
+.env.*.local
+.env.production
+*.key
+*.pem
+
+
+# ===== NODE.JS =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+
+
+# ===== BUILD Y DIST =====
+dist/
+build/
+out/
+*.js.map
+*.d.ts.map
+
+
+# ===== IDE Y EDITORES =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+Thumbs.db
+*.iml
+
+
+# ===== HERRAMIENTAS DE DESARROLLO =====
+.eslintcache
+.prettierignore
+.husky
+
+
+# ===== LOGS Y TEMPORALES =====
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+
+# ===== TESTING =====
+coverage/
+.nyc_output/
+.jest-cache
+
+
+# ===== MISC =====
+.cache/
+.env.*.cache
+.turbo/

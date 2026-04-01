@@ -1,0 +1,50 @@
+# NestJS / Node.js
+/dist
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment and credentials
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# Mac
+.DS_Store
+
+# Testing
+coverage
+.nyc_output
+
+# Build and cache
+.eslintcache
+.cache
+.turbo
+
+# Logs
+*.log
+logs
+
+# Temporary files
+tmp
+temp
+*.tmp
+
+# OS specific
+Thumbs.db
