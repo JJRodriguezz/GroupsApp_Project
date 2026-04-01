@@ -1,5 +1,5 @@
-# ===== HERRAMIENTAS Y AUTOMATIZACIÓN (CONFIDENCIAL) =====
-# Archivos que evidencian uso de herramientas de IA y automatización
+# ===== HERRAMIENTAS Y AUTOMATIZACIÓN =====
+
 agents.md
 *.instructions.md
 .copilot*
