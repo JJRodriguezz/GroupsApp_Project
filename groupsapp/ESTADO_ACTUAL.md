@@ -749,9 +749,9 @@ DB_PASS=password  # Cambiar contraseña DB
 
 ## 👥 Equipo
 
-- **Desarrollador Principal:** [Tu Nombre]
+- **Desarrolladores Principales:** JUAN RODRIGUEZ - ESTEBAN ROMERO
 - **Proyecto Académico:** Sistemas Distribuidos - Semestre 6
-- **Inicio:** Abril 2026
+- **Inicio:** Marzo 2026
 
 ---
 
@@ -759,7 +759,6 @@ DB_PASS=password  # Cambiar contraseña DB
 
 Para preguntas sobre:
 
-- **Arquitectura:** Ver `agents.md`
 - **Instalación:** Ver sección de Instalación
 - **Endpoints:** Ver sección de Funcionalidades
 - **Testing:** Ver sección de Pruebas
