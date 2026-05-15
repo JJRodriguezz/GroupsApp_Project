@@ -5,7 +5,7 @@
 import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
 import { HttpClientService } from '../http/http.service';
 
-const AUTH_URL = () => process.env.AUTH_SERVICE_URL || 'http://localhost:3001';
+const AUTH_URL = () => process.env.AUTH_SERVICE_URL;
 
 @Controller('auth')
 export class AuthGatewayController {

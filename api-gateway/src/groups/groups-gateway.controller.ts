@@ -6,7 +6,7 @@ import {
 import { HttpClientService } from '../http/http.service';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 
-const GROUPS_URL = () => process.env.GROUPS_SERVICE_URL || 'http://localhost:3003';
+const GROUPS_URL = () => process.env.GROUPS_SERVICE_URL;
 
 @Controller('groups')
 @UseGuards(JwtAuthGuard)

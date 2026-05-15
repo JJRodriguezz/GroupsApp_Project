@@ -121,7 +121,7 @@ services:
     environment:
       POSTGRES_DB: auth_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5433:5432"
     volumes:
@@ -140,7 +140,7 @@ services:
     environment:
       POSTGRES_DB: users_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5434:5432"
     volumes:
@@ -159,7 +159,7 @@ services:
     environment:
       POSTGRES_DB: groups_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5435:5432"
     volumes:
@@ -179,7 +179,7 @@ services:
     environment:
       POSTGRES_DB: messaging_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     command: ["postgres", "-c", "wal_level=logical", "-c", "max_replication_slots=4", "-c", "max_wal_senders=4"]
     ports:
       - "5436:5432"
@@ -202,7 +202,7 @@ services:
     environment:
       POSTGRES_DB: media_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5437:5432"
     volumes:
@@ -221,7 +221,7 @@ services:
     environment:
       POSTGRES_DB: presence_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5438:5432"
     volumes:
@@ -251,9 +251,9 @@ services:
       DB_HOST: postgres-auth
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: auth_db
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
       CONSUL_URL: http://consul:8500
@@ -278,9 +278,9 @@ services:
       DB_HOST: postgres-users
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: users_db
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
       AUTH_SERVICE_URL: http://auth-service:3001
@@ -310,9 +310,9 @@ services:
       DB_HOST: postgres-groups
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: groups_db
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
       USERS_SERVICE_URL: http://users-service:3002
@@ -345,9 +345,9 @@ services:
       DB_HOST: postgres-messaging
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: messaging_db
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
       USERS_SERVICE_URL: http://users-service:3002
@@ -379,9 +379,9 @@ services:
       DB_HOST: postgres-media
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: media_db
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
       USERS_SERVICE_URL: http://users-service:3002
@@ -416,11 +416,11 @@ services:
       DB_HOST: postgres-presence
       DB_PORT: 5432
       DB_USERNAME: postgres
-      DB_PASSWORD: password
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: presence_db
       REDIS_URL: redis://redis:6379
       CONSUL_URL: http://consul:8500
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
+      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: development
       KAFKA_BROKER: kafka:29092
     ports:
@@ -483,7 +483,7 @@ services:
     image: grafana/grafana:10.2.0
     container_name: groupsapp-grafana
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_ADMIN_PASSWORD:-admin}
       - GF_USERS_ALLOW_SIGN_UP=false
     volumes:
       - grafana-data:/var/lib/grafana
@@ -515,8 +515,7 @@ services:
       - presence-service
     environment:
       PORT: 3000
-      JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-key-cambiar-en-prod}
-      AUTH_SERVICE_URL: http://auth-service:3001
+      JWT_SECRET: ${JWT_SECRET}
       USERS_SERVICE_URL: http://users-service:3002
       GROUPS_SERVICE_URL: http://groups-service:3003
       MESSAGING_SERVICE_URL: http://messaging-service:3005

@@ -8,7 +8,7 @@ import axios from 'axios';
 @Injectable()
 export class UsersService {
   private readonly logger = new Logger(UsersService.name);
-  private readonly authServiceUrl = process.env.AUTH_SERVICE_URL || 'http://localhost:3001';
+  private readonly authServiceUrl = process.env.AUTH_SERVICE_URL;
 
   constructor(
     @InjectRepository(User)

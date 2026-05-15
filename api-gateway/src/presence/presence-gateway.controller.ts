@@ -16,7 +16,7 @@ import { HttpClientService } from '../http/http.service';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 
 const PRESENCE_URL = () =>
-  process.env.PRESENCE_SERVICE_URL || 'http://localhost:3006';
+  process.env.PRESENCE_SERVICE_URL;
 
 @Controller('presence')
 @UseGuards(JwtAuthGuard)

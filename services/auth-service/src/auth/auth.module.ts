@@ -13,7 +13,7 @@ import { KafkaModule } from '../kafka/kafka.module';
     TypeOrmModule.forFeature([User]),
     PassportModule,
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'super-secret-jwt-key',
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '24h' },
     }),
     KafkaModule,

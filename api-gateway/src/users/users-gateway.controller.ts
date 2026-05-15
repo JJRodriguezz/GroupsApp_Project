@@ -6,7 +6,7 @@ import {
 import { HttpClientService } from '../http/http.service';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 
-const USERS_URL = () => process.env.USERS_SERVICE_URL || 'http://localhost:3002';
+const USERS_URL = () => process.env.USERS_SERVICE_URL;
 
 @Controller('users')
 @UseGuards(JwtAuthGuard)

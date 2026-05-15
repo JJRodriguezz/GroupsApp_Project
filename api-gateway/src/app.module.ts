@@ -16,7 +16,7 @@ import { PresenceGatewayModule } from './presence/presence-gateway.module';
     ConfigModule.forRoot({ isGlobal: true }),
     JwtModule.register({
       global: true,
-      secret: process.env.JWT_SECRET || 'super-secret-jwt-key',
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '24h' },
     }),
     MulterModule.register({ storage: memoryStorage() }),

@@ -12,7 +12,7 @@ import { ContactsModule } from '../contacts/contacts.module';
   imports: [
     TypeOrmModule.forFeature([User]),
     JwtModule.register({
-      secret: process.env.JWT_SECRET || 'super-secret-jwt-key',
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '24h' },
     }),
     ContactsModule,

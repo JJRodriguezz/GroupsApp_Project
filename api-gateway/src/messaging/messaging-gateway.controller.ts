@@ -6,7 +6,7 @@ import {
 import { HttpClientService } from '../http/http.service';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 
-const MSG_URL = () => process.env.MESSAGING_SERVICE_URL || 'http://localhost:3005';
+const MSG_URL = () => process.env.MESSAGING_SERVICE_URL;
 
 @Controller()
 @UseGuards(JwtAuthGuard)

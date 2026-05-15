@@ -25,7 +25,7 @@ import { HttpClientService } from '../common/http-client.service';
 export class GroupsService {
   private readonly logger = new Logger(GroupsService.name);
   private readonly usersServiceUrl =
-    process.env.USERS_SERVICE_URL || 'http://localhost:3002';
+    process.env.USERS_SERVICE_URL;
 
   constructor(
     @InjectRepository(Group)

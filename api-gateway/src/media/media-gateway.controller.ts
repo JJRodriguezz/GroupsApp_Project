@@ -9,7 +9,7 @@ import { HttpClientService } from '../http/http.service';
 import { JwtAuthGuard } from '../guards/jwt.guard';
 import * as FormData from 'form-data';
 
-const MEDIA_URL = () => process.env.MEDIA_SERVICE_URL || 'http://localhost:3004';
+const MEDIA_URL = () => process.env.MEDIA_SERVICE_URL;
 
 @Controller('media')
 @UseGuards(JwtAuthGuard)

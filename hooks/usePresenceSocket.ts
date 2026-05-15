@@ -5,7 +5,7 @@ import { io, Socket } from "socket.io-client"
 import type { Presence, PresenceStatus } from "@/lib/api"
 
 const PRESENCE_WS_URL =
-  (process.env.NEXT_PUBLIC_PRESENCE_WS_URL || "http://localhost:3006") + "/presence"
+  (process.env.NEXT_PUBLIC_PRESENCE_WS_URL) + "/presence"
 const HEARTBEAT_INTERVAL = 30_000 // 30 s
 
 interface UsePresenceSocketOptions {
@@ -94,7 +94,7 @@ export function usePresenceSocket({
 
     // Heartbeat para mantener TTL en Redis
     heartbeatRef.current = setInterval(() => {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/presence/${userId}/heartbeat`, {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/presence/${userId}/heartbeat`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
