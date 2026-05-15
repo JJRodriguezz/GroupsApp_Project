@@ -464,7 +464,7 @@ Academic project - Use for educational purposes only.
 
 ## 👨‍💻 Authors
 
-**JJ Rodriguez**  
+**JJ Rodriguez** | **Eromero1907**  
 Distributed Systems Engineering Course - Semester 6
 
 ---
